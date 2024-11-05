@@ -1,0 +1,3 @@
+C:/Users/User/Desktop/Коледж/4 курс/ТСПП/3D-viewer/build/CMakeFiles/3D-viewer.dir
+C:/Users/User/Desktop/Коледж/4 курс/ТСПП/3D-viewer/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/User/Desktop/Коледж/4 курс/ТСПП/3D-viewer/build/CMakeFiles/ZERO_CHECK.dir

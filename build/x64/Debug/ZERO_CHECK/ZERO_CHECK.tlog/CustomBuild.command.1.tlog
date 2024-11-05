@@ -1,0 +1,10 @@
+^C:\USERS\USER\DESKTOP\КОЛЕДЖ\4 КУРС\ТСПП\3D-VIEWER\BUILD\CMAKEFILES\5DF23E478C2A7411C0ADAD1AFBCB1DCF\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/User/Desktop/Коледж/4 курс/ТСПП/3D-viewer" "-BC:/Users/User/Desktop/Коледж/4 курс/ТСПП/3D-viewer/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/3D-viewer/build/3D-viewer.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
