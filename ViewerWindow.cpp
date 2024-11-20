@@ -1,5 +1,5 @@
 #include "ViewerWindow.h"
-#include "include/glad.h"
+#include "include/glad/glad.h"
 #include "iostream"
 
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -70,7 +70,7 @@ ViewerWindow::ViewerWindow(const std::string& title, uint32_t width, uint32_t he
 
 	glfwSetKeyCallback(m_ptrHandle, &keyCallback);
 	glfwSetMouseButtonCallback(m_ptrHandle, &mouseButtonCallback);
-	glfwSetCursorPosCallback(m_ptrHandle, &cursorCallback); 
+	glfwSetCursorPosCallback(m_ptrHandle, &cursorCallback);
 	glfwSetScrollCallback(m_ptrHandle, &scrollCallback);
 }
 
