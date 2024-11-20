@@ -1,1 +1,5 @@
-C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\src\main.cpp;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\3D-viewer.dir\Debug\main.obj
+C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\main.cpp;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\3D-viewer.dir\Debug\main.obj
+C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\ViewerWindow.cpp;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\3D-viewer.dir\Debug\ViewerWindow.obj
+C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\OpenglRenderSystem.cpp;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\3D-viewer.dir\Debug\OpenglRenderSystem.obj
+C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\GeometryPrimitives.cpp;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\3D-viewer.dir\Debug\GeometryPrimitives.obj
+C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\glad.c;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\3D-viewer.dir\Debug\glad.obj

@@ -24,7 +24,6 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C28DB2F3-6533-3DDA-9FE3-6930264853DC}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <VcpkgEnabled>false</VcpkgEnabled>
     <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
     <ProjectName>3D-viewer</ProjectName>
@@ -55,7 +54,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="PropertySheets">
-    <Import Project="do_not_import_user.props" Condition="exists('do_not_import_user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
@@ -87,50 +86,39 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/installed/x64-windows/include" -Wextra</AdditionalOptions>
+      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/installed/x64-windows/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ExceptionHandling>
-      </ExceptionHandling>
+      <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
       <Optimization>Disabled</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);GLFW_DLL;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;GLFW_INCLUDE_NONE;GLFW_DLL;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;GLFW_DLL;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;GLFW_INCLUDE_NONE;GLFW_DLL;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\include;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\include;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <PostBuildEvent>
-      <Message></Message>
-      <Command>setlocal
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/3D-viewer/build/Debug/3D-viewer.exe" -installedDir "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/installed/x64-windows/debug/bin" -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-    </PostBuildEvent>
     <Link>
       <AdditionalDependencies>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\debug\lib\glfw3dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -147,51 +135,40 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/installed/x64-windows/include" -Wextra</AdditionalOptions>
+      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/installed/x64-windows/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <ExceptionHandling>
-      </ExceptionHandling>
+      <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;GLFW_DLL;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_INCLUDE_NONE;GLFW_DLL;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;GLFW_DLL;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_INCLUDE_NONE;GLFW_DLL;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\include;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\include;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <PostBuildEvent>
-      <Message></Message>
-      <Command>setlocal
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/3D-viewer/build/Release/3D-viewer.exe" -installedDir "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/installed/x64-windows/bin" -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-    </PostBuildEvent>
     <Link>
       <AdditionalDependencies>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\lib\glfw3dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -208,53 +185,42 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/installed/x64-windows/include" -Wextra</AdditionalOptions>
+      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/installed/x64-windows/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <ExceptionHandling>
-      </ExceptionHandling>
+      <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
       <Optimization>MinSpace</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;GLFW_DLL;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_INCLUDE_NONE;GLFW_DLL;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;GLFW_DLL;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_INCLUDE_NONE;GLFW_DLL;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\include;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\include;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <PostBuildEvent>
-      <Message></Message>
-      <Command>setlocal
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/3D-viewer/build/MinSizeRel/3D-viewer.exe" -installedDir "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/installed/x64-windows/bin" -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-    </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\lib\glfw3dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\debug\lib\glfw3dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -269,52 +235,41 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/installed/x64-windows/include" -Wextra</AdditionalOptions>
+      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/installed/x64-windows/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <ExceptionHandling>
-      </ExceptionHandling>
+      <ExceptionHandling>Sync</ExceptionHandling>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <MinimalRebuild></MinimalRebuild>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;GLFW_DLL;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_INCLUDE_NONE;GLFW_DLL;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;GLFW_DLL;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLFW_INCLUDE_NONE;GLFW_DLL;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\include;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\include;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <PostBuildEvent>
-      <Message></Message>
-      <Command>setlocal
-C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/scripts/buildsystems/msbuild/applocal.ps1" -targetBinary "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/3D-viewer/build/RelWithDebInfo/3D-viewer.exe" -installedDir "C:/Users/User/Desktop/Коледж/4 курс/ТСПП/vcpkg/installed/x64-windows/bin" -OutVariable out
-if %errorlevel% neq 0 goto :cmEnd
-:cmEnd
-endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
-:cmErrorLevel
-exit /b %1
-:cmDone
-if %errorlevel% neq 0 goto :VCEnd</Command>
-    </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\lib\glfw3dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\debug\lib\glfw3dll.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -340,7 +295,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCXXCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeRCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeSystem.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Config.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3ConfigVersion.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfigVersion.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\scripts\buildsystems\vcpkg.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCXXCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeRCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeSystem.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Config.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3ConfigVersion.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/User/Desktop/Коледж/4 курс/ТСПП/3D-viewer/CMakeLists.txt</Message>
@@ -353,7 +308,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCXXCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeRCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeSystem.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Config.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3ConfigVersion.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfigVersion.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\scripts\buildsystems\vcpkg.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCXXCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeRCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeSystem.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Config.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3ConfigVersion.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/User/Desktop/Коледж/4 курс/ТСПП/3D-viewer/CMakeLists.txt</Message>
@@ -366,7 +321,7 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCXXCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeRCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeSystem.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Config.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3ConfigVersion.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfigVersion.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\scripts\buildsystems\vcpkg.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCXXCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeRCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeSystem.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Config.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3ConfigVersion.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/User/Desktop/Коледж/4 курс/ТСПП/3D-viewer/CMakeLists.txt</Message>
@@ -379,13 +334,21 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCXXCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeRCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeSystem.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Config.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3ConfigVersion.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfigVersion.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\scripts\buildsystems\vcpkg.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeCXXCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeRCCompiler.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\3.31.0-rc3\CMakeSystem.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Config.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3ConfigVersion.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glfw3\glfw3Targets.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-debug.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig-release.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfig.cmake;C:\Users\User\Desktop\Коледж\4 курс\ТСПП\vcpkg\installed\x64-windows\share\glm\glmConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\src\main.cpp" />
+    <ClCompile Include="C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\main.cpp" />
+    <ClInclude Include="C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\Vertex.h" />
+    <ClInclude Include="C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\ViewerWindow.h" />
+    <ClCompile Include="C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\ViewerWindow.cpp" />
+    <ClInclude Include="C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\OpenglRenderSystem.h" />
+    <ClCompile Include="C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\OpenglRenderSystem.cpp" />
+    <ClInclude Include="C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\GeometryPrimitives.h" />
+    <ClCompile Include="C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\GeometryPrimitives.cpp" />
+    <ClCompile Include="C:\Users\User\Desktop\Коледж\4 курс\ТСПП\3D-viewer\glad.c" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
